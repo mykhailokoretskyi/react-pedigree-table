@@ -1,5 +1,3 @@
 'use strict';
 
-export default function run(){
-    alert("Hello");
-};
+export PedigreeUtil from './pedigree/util';
