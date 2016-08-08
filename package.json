@@ -1,6 +1,6 @@
 {
   "name": "react-pedigree-table",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "React pedigree generator",
   "main": "./lib/index.js",
   "files": [
