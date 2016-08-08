@@ -7,7 +7,7 @@ class PedigreeUtil {
         this.bottomField = bottomField;
     }
 
-    generatePedigreeData(object, depth){
+    generatePedigreeData(obj, depth){
         if (this.pedigreeData.length)
             return this.pedigreeData;
 
@@ -29,8 +29,8 @@ class PedigreeUtil {
         if (this.pedigreeData.length == 0)
             this.pedigreeData.push([]);
 
-        let father = obj[this.topField] || new CatModel();
-        let mother = obj[this.bottomField] || new CatModel();
+        let father = obj[this.topField] || this.getMockObject();
+        let mother = obj[this.bottomField] || this.getMockObject();
 
         var row = this.pedigreeData[this.pedigreeData.length - 1];
         row.push(father);
