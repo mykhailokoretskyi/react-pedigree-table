@@ -1,3 +1,5 @@
 'use strict';
 
-export Pedigree from './pedigree/pedigree';
+import Pedigree from './pedigree/pedigree';
+
+export default Pedigree;
