@@ -1,7 +1,5 @@
 import React from 'react';
 import Pedigree from '../pedigree';
-import PedigreeUtil from '../util';
-import Cell from '../__mocks__/cell';
 import renderer from '../../../node_modules/react/lib/ReactTestRenderer';
 
 var instance = {
@@ -87,14 +85,13 @@ var instance = {
     }
 };
 
-var util = new PedigreeUtil("father", "mother");
-var data = util.generatePedigreeData(instance, 5);
-data = util.generatePedigreeData(instance, 5);
-
 describe('Pedigree', () => {
     it('matches snapshot with default generator', () => {
         const component = renderer.create(
-            <Pedigree pedigreeData={data} />
+            <Pedigree pedigreeData={instance}
+                      leftBranchFieldName={"father"}
+                      rightBranchFieldName={"mother"}
+                      depth={5} />
         );
         let tree = component.toJSON();
         expect(tree).toMatchSnapshot();
@@ -110,7 +107,11 @@ describe('Pedigree', () => {
         };
 
         const component = renderer.create(
-            <Pedigree pedigreeData={data} cellGenerator={generator} />
+            <Pedigree pedigreeData={instance}
+                      cellGenerator={generator}
+                      leftBranchFieldName={"father"}
+                      rightBranchFieldName={"mother"}
+                      depth={5} />
         );
         let tree = component.toJSON();
         expect(tree).toMatchSnapshot();

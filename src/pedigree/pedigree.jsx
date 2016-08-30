@@ -2,14 +2,18 @@
 
 import React from 'react';
 import PedigreeCell from './pedigreeCell';
+import PedigreeUtil from './pedigreeUtil';
 
 export default class Pedigree extends React.Component {
 
     static displayName = 'Pedigree';
 
     static propTypes = {
-        pedigreeData:       React.PropTypes.array.isRequired,
-        cellGenerator:      React.PropTypes.func
+        pedigreeData:           React.PropTypes.object.isRequired,
+        leftBranchFieldName:    React.PropTypes.string.isRequired,
+        rightBranchFieldName:   React.PropTypes.string.isRequired,
+        depth:                  React.PropTypes.number.isRequired,
+        cellGenerator:          React.PropTypes.func
     };
 
     static defaultProps = {
@@ -21,8 +25,8 @@ export default class Pedigree extends React.Component {
     };
 
     render = () => {
-        const pedigreeData = this.props.pedigreeData;
-        const cell = this.props.CellComponent;
+        const util = new PedigreeUtil(this.props.leftBranchFieldName, this.props.rightBranchFieldName);
+        const pedigreeData = util.generatePedigreeData(this.props.pedigreeData, this.props.depth);
 
         var pedigree = pedigreeData.map((value, rowIndex) => {
             var row = value.map((pet, index) => {

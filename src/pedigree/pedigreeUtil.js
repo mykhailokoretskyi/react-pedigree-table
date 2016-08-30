@@ -8,8 +8,7 @@ class PedigreeUtil {
     }
 
     generatePedigreeData(obj, depth){
-        if (this.pedigreeData.length)
-            return this.pedigreeData;
+        this.pedigreeData = [];
 
         this.process(obj, depth);
         return this.pedigreeData;
